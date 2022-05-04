@@ -1,5 +1,31 @@
 package com.dio.santander.bankline.api.controller;
 
-public class MovimentacaoController {
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.dio.santander.bankline.api.dto.NovaMovimentacao;
+import com.dio.santander.bankline.api.model.Movimentacao;
+import com.dio.santander.bankline.api.repository.MovimentacaoRepository;
+import com.dio.santander.bankline.api.service.MovimentacaoService;
+
+public class MovimentacaoController {
+	@Autowired
+	private MovimentacaoRepository repository;
+	
+	@Autowired
+	private MovimentacaoService service;
+	
+	@GetMapping
+	public List<Movimentacao> findAll(){
+		return repository.findAll();
+	}
+	
+	@PostMapping
+	public void save(@RequestBody NovaMovimentacao movimentacao) {
+		service.save(movimentacao);
+	}
 }
