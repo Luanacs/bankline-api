@@ -11,6 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name="tab_movimentacao")
 public class Movimentacao {
@@ -20,6 +24,7 @@ public class Movimentacao {
 	private Integer id;
 	
 	@Column(name="data_hora")
+	@JsonFormat(pattern= "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime dataHora;
 	
 	private String descricao;
