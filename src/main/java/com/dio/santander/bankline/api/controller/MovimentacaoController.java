@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.dio.santander.bankline.api.dto.NovaMovimentacao;
-import com.dio.santander.bankline.api.model.Correntista;
 import com.dio.santander.bankline.api.model.Movimentacao;
 import com.dio.santander.bankline.api.repository.MovimentacaoRepository;
 import com.dio.santander.bankline.api.service.MovimentacaoService;
@@ -33,6 +32,10 @@ public class MovimentacaoController {
 	@GetMapping
 	public List<Movimentacao> findAll(){
 		return repository.findAll();
+	}
+	@GetMapping("/{idConta}")
+	public List<Movimentacao> findAll(@PathVariable("idConta") Integer idConta){
+		return repository.findByIdConta(idConta);
 	}
 	
 	@PostMapping
